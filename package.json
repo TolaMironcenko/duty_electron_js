@@ -1,0 +1,19 @@
+{
+  "name": "duty",
+  "version": "1.0.0",
+  "description": "Duty app.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tola Mironcenko",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.3",
+    "electron": "^21.3.1"
+  }
+}

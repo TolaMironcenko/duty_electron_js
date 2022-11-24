@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+            http-equiv="X-Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+    />
+    <link rel="stylesheet" href="css/index.css">
+    <title>Duty</title>
+</head>
+<body>
+<div class="app">
+    <div class="balance">
+        <div class="balance-block">
+            <h1 class="header-balance">0</h1>
+            <div class="header-buttons">
+                <button class="button plus">+</button>
+                <button class="button minus">-</button>
+            </div>
+        </div>
+    </div>
+    <div class="transactions"></div>
+
+    <div class="transaction-modal">
+        <div class="transaction-modal-content">
+            <button class="exit">✖</button>
+            <h3 class="transaction-modal-header">Sum</h3>
+            <input class="transaction-modal-input" type="number" min="0" placeholder="100">
+            <button class="button modal">Add</button>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../renderer.js"></script>
+</html>

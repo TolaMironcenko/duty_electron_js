@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    background: linear-gradient(320deg, rgba(255, 100, 200, 0.75), rgba(100, 100, 255, 0.6), rgba(100, 255, 100, 0.75));
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.balance {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.balance-block {
+    padding: 10px 25px;
+    background: linear-gradient(10deg, rgba(255, 200, 50, 0.6), rgba(200, 50, 100, 0.6));
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    margin: 5px;
+    border-radius: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: inherit;
+}
+
+.plus {
+    background: rgba(80, 255, 90, 0.7);
+}
+
+.transactions {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    /*flex-direction: column;*/
+    align-items: center;
+    justify-content: center;
+}
+
+.transaction {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    width: max-content;
+    animation: ani 0.4s;
+}
+
+.minus {
+    background: rgba(255, 90, 80, 0.7);
+}
+
+.transaction-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    transform: scale(0);
+    transition: 0.4s;
+}
+
+.transaction-modal.active {
+    transform: scale(1);
+}
+
+.transaction-modal-content {
+    position: relative;
+    background: rgba(100, 100, 200, 0.4);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.transaction-modal-header {
+    text-align: center;
+    margin: 5px;
+}
+
+.transaction-modal-input {
+    padding: 10px;
+    border-radius: 10px;
+    border: rgba(0, 0, 0, 0.75);
+    background: rgba(240, 200, 200, 0.9);
+    margin: 5px;
+}
+
+.exit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+@keyframes ani {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
