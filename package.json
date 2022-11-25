@@ -4,6 +4,7 @@
   "author": "Tola Mironcenko",
   "description": "Duty app.",
   "main": "main.js",
+  "repository": "https://github.com/TolaMironcenko/duty_electron_js.git",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
