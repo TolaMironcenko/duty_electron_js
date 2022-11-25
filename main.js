@@ -7,7 +7,7 @@ const createWindow = () => {
     const window = new BrowserWindow({
         width: 350,
         height: 350,
-        icon: __dirname+'/data/img/macOS/AppIcon.appiconset/icon-512.png',
+        icon: __dirname+'/data/img/electron.png',
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
         },
