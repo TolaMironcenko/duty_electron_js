@@ -1,16 +1,33 @@
 {
   "name": "duty",
   "version": "1.0.0",
+  "author": "Tola Mironcenko",
   "description": "Duty app.",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "publish": "electron-forge publish"
   },
   "config": {
     "forge": {
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "platforms": [
+            "darwin",
+            "linux"
+          ],
+          "config": {
+            "repository": {
+              "owner": "TolaMironcenko",
+              "name": "duty_electron_js"
+            },
+            "prerelease": true
+          }
+        }
+      ],
       "packagerConfig": {
         "icon": "data/img/electron.png"
       },
@@ -43,13 +60,16 @@
     }
   },
   "keywords": [],
-  "author": "Tola Mironcenko",
   "license": "ISC",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.3",
     "@electron-forge/maker-deb": "^6.0.3",
     "@electron-forge/maker-dmg": "^6.0.3",
     "@electron-forge/maker-zip": "^6.0.3",
+    "@electron-forge/publisher-github": "^6.0.3",
     "electron": "^21.3.1"
+  },
+  "dependencies": {
+    "update-electron-app": "^2.0.1"
   }
 }
