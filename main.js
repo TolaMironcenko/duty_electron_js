@@ -6,6 +6,7 @@ require('update-electron-app')()
 
 const createWindow = () => {
     const window = new BrowserWindow({
+        autoHideMenuBar: true,
         width: 350,
         height: 350,
         icon: __dirname+'/data/img/electron.png',
@@ -13,7 +14,8 @@ const createWindow = () => {
             preload: path.join(__dirname, 'preload.js'),
         },
     })
-    ipcMain.handle('ping', () => 'pong')
+    window.setMenuBarVisibility(false)
+
     ipcMain.handle('get_balance', () => {
         return fs.readFileSync(__dirname+'/data/balance', 'utf-8')
     })

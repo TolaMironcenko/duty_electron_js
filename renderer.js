@@ -47,14 +47,14 @@ const create_transaction_block = (sum) => {
 //
 // })
 
-setInterval(() => {
-    window.versions.get_balance().then(
+setInterval(async () => {
+    await window.versions.get_balance().then(
         (value) => {
             balance = value
             header_balance.innerHTML = balance
         }
     )
-    window.versions.get_transactions().then(
+    await window.versions.get_transactions().then(
         (value) => {
             if (value !== '') {
                 if (!equals(transactions, value.split('\n'))) {
@@ -86,22 +86,13 @@ button_minus.addEventListener('click', () => {
     transition_modal.id = 'minus'
 })
 
-add_button.addEventListener('click', () => {
+add_button.addEventListener('click', async () => {
     if (transition_modal.id === 'plus') {
-        window.versions.add_transaction(transaction_modal_input.value)
+        await window.versions.add_transaction(transaction_modal_input.value)
     } else if (transition_modal.id === 'minus') {
-        window.versions.add_transaction(0 - transaction_modal_input.value)
+        await window.versions.add_transaction(0 - transaction_modal_input.value)
     }
 
     transaction_modal_input.value = ''
     transition_modal.classList.remove('active')
 })
-
-const func = async () => {
-    const response = await window.versions.ping()
-    console.log(response) // prints out 'pong'
-}
-
-func()
-
-
