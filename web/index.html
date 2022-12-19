@@ -11,10 +11,18 @@
             content="default-src 'self'; script-src 'self'"
     />
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/loader.css">
     <title>Duty</title>
 </head>
 <body>
 <div class="app">
+
+    <button class="button logout" id="logout_button">
+        <img class="logout-button-image" src="../data/img/logout.svg">
+    </button>
+
+    <h1 class="username-header" id="username_header"></h1>
+
     <div class="balance">
         <div class="balance-block">
             <h1 class="header-balance">0</h1>
@@ -24,17 +32,32 @@
             </div>
         </div>
     </div>
-    <div class="transactions"></div>
+    <div class="transactions">
+        <div class="loader active"></div>
+    </div>
 
-    <div class="transaction-modal">
+    <div class="transaction-modal" id="transaction_sum">
         <div class="transaction-modal-content">
             <button class="exit">✖</button>
             <h3 class="transaction-modal-header">Sum</h3>
-            <input class="transaction-modal-input" type="number" min="0" placeholder="100">
+            <input class="transaction-modal-input" id="transaction_sum_input" type="number" min="0" placeholder="100">
             <button class="button modal">Add</button>
+        </div>
+    </div>
+
+    <div class="transaction-modal active" id="username">
+        <div class="transaction-modal-content">
+            <h3 class="transaction-modal-header">Username</h3>
+            <input class="transaction-modal-input" id="username_input" type="text" placeholder="Some username">
+            <button class="button modal" id="get_username_button">Next</button>
         </div>
     </div>
 </div>
 </body>
-<script src="../renderer.js"></script>
+<script src="js/variables.js"></script>
+<script src="js/get_data.js"></script>
+<script src="js/create_transaction_block.js"></script>
+<script src="js/renderer.js"></script>
+<script src="js/logout.js"></script>
+<script src="js/window_listener.js"></script>
 </html>

@@ -72,6 +72,8 @@
     "electron-forge": "^5.2.4"
   },
   "dependencies": {
+    "sqlite": "^3.0.6",
+    "sqlite3": "^5.1.4",
     "update-electron-app": "^2.0.1"
   }
 }

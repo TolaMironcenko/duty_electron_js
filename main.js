@@ -1,6 +1,5 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require("path");
-const { ipcMain } = require('electron')
 const fs = require('fs')
 require('update-electron-app')()
 
@@ -9,7 +8,7 @@ const createWindow = () => {
         autoHideMenuBar: true,
         width: 350,
         height: 350,
-        icon: __dirname+'/data/img/electron.png',
+        icon: __dirname + '/data/img/electron.png',
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
         },
@@ -17,17 +16,17 @@ const createWindow = () => {
     window.setMenuBarVisibility(false)
 
     ipcMain.handle('get_balance', () => {
-        return fs.readFileSync(__dirname+'/data/balance', 'utf-8')
+        return fs.readFileSync(__dirname + '/data/balance', 'utf-8')
     })
     ipcMain.handle('get_transactions', () => {
-        return fs.readFileSync(__dirname+'/data/transactions', 'utf-8')
+        return fs.readFileSync(__dirname + '/data/transactions', 'utf-8')
     })
     ipcMain.on('add_transaction', (event, sum) => {
-        let balance = fs.readFileSync(__dirname+'/data/balance', 'utf-8')
-        fs.writeFileSync(__dirname+'/data/balance', (parseFloat(balance)+parseFloat(sum)).toString())
-        fs.appendFileSync(__dirname+'/data/transactions', sum.toString()+'\n')
+        let balance = fs.readFileSync(__dirname + '/data/balance', 'utf-8')
+        fs.writeFileSync(__dirname + '/data/balance', (parseFloat(balance) + parseFloat(sum)).toString())
+        fs.appendFileSync(__dirname + '/data/transactions', sum.toString() + '\n')
     })
-    window.loadFile(__dirname+'/web/index.html')
+    window.loadFile(__dirname + '/web/index.html')
 }
 
 app.whenReady().then(() => {
