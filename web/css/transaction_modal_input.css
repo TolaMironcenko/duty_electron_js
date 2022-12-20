@@ -1,0 +1,20 @@
+.transaction-modal-input {
+    padding: 10px;
+    border-radius: 10px;
+    border: rgba(0, 0, 0, 0.75);
+    background: rgba(240, 200, 200, 0.9);
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.transaction-modal-input:focus {
+    outline: none;
+}
+
+.transaction-modal-input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.transaction-modal-input.err {
+    border: 2px solid rgba(200, 0, 0, 0.5);
+}

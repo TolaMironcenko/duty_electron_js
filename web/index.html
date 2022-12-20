@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/transaction_modal_input.css">
     <title>Duty</title>
 </head>
 <body>
@@ -45,11 +46,27 @@
         </div>
     </div>
 
-    <div class="transaction-modal active" id="username">
-        <div class="transaction-modal-content">
-            <h3 class="transaction-modal-header">Username</h3>
-            <input class="transaction-modal-input" id="username_input" type="text" placeholder="Some username">
-            <button class="button modal" id="get_username_button">Next</button>
+    <div class="auth-or-register">
+        <div class="transaction-modal active" id="username">
+            <div class="transaction-modal-content">
+                <h3 class="transaction-modal-header">Username</h3>
+                <input class="transaction-modal-input" id="username_input" type="text" placeholder="Some username">
+                <button class="button modal" id="get_username_button">Next</button>
+            </div>
+        </div>
+        <div class="transaction-modal" id="enter_password">
+            <div class="transaction-modal-content">
+                <h3 class="transaction-modal-header">Enter password</h3>
+                <input class="transaction-modal-input" id="enter_password_input" type="password" placeholder="********">
+                <button class="button modal" id="enter_password_button">Next</button>
+            </div>
+        </div>
+        <div class="transaction-modal" id="retype_password">
+            <div class="transaction-modal-content">
+                <h3 class="transaction-modal-header">Retype password</h3>
+                <input class="transaction-modal-input" id="retype_password_input" type="password" placeholder="********">
+                <button class="button modal" id="retype_password_button">Next</button>
+            </div>
         </div>
     </div>
 </div>
@@ -57,6 +74,7 @@
 <script src="js/variables.js"></script>
 <script src="js/get_data.js"></script>
 <script src="js/create_transaction_block.js"></script>
+<script src="js/passwd_security.js"></script>
 <script src="js/renderer.js"></script>
 <script src="js/logout.js"></script>
 <script src="js/window_listener.js"></script>

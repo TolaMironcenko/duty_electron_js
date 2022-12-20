@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require("path");
 const fs = require('fs')
+const bcrypt = require("bcrypt");
 require('update-electron-app')()
 
 const createWindow = () => {
@@ -26,6 +27,22 @@ const createWindow = () => {
         fs.writeFileSync(__dirname + '/data/balance', (parseFloat(balance) + parseFloat(sum)).toString())
         fs.appendFileSync(__dirname + '/data/transactions', sum.toString() + '\n')
     })
+    ipcMain.on('set_app_password', async (event, password) => {
+        const salt = await bcrypt.genSalt(10);
+        let hashed_password = await bcrypt.hash(password, salt);
+        fs.writeFileSync(__dirname + '/data/password', hashed_password)
+    })
+    ipcMain.handle('validate_password', (event, password) => {
+        const hashed_password = fs.readFileSync(__dirname + '/data/password', 'utf-8')
+        return bcrypt.compareSync(password, hashed_password)
+    })
+    ipcMain.handle('have_password', () => {
+        return (fs.readFileSync(__dirname + '/data/password', 'utf-8') !== '')
+    })
+    ipcMain.handle('delete_password', () => {
+        fs.writeFileSync(__dirname + '/data/password', '')
+    })
+
     window.loadFile(__dirname + '/web/index.html')
 }
 

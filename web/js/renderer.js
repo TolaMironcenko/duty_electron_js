@@ -1,7 +1,11 @@
+username_modal_input.focus()
 
 if (username !== '') {
     username_header.innerHTML = username
     username_modal.classList.remove('active')
+    username_modal_input.blur()
+    enter_password_modal.classList.add('active')
+    enter_password_input.focus()
 }
 
 const equals = (transactions, valuetransactions) => {
@@ -16,38 +20,39 @@ const equals = (transactions, valuetransactions) => {
     return true
 }
 
-// const create_transaction_block = (sum) => {
-//     console.log(isNaN(sum))
-//     if (!isNaN(sum)) {
-//         const transaction_block = document.createElement('div')
-//         const transaction_sum_p = document.createElement('p')
-//         transaction_sum_p.innerHTML = sum
-//         transaction_block.append(transaction_sum_p)
-//         transaction_sum_p.classList.add('sum')
-//         transaction_block.classList.add('transaction')
-//         if (sum > 0) {
-//             transaction_block.classList.add('plus')
-//             transaction_sum_p.innerHTML = '+' + sum
-//         } else {
-//             transaction_block.classList.add('minus')
-//             transaction_sum_p.innerHTML = sum
-//         }
-//         transaction_block.style = 'animation'
-//         all_transactions_block.append(transaction_block)
-//     }
-// }
-
 const get_username = () => {
     if (username_modal_input.value !== '' && !/^\s+$/.test(username_modal_input.value)) {
-        username = username_modal_input.value
+        let username_f_uppercase = username_modal_input.value.split('')
+        username_f_uppercase[0] = username_f_uppercase[0].toUpperCase()
+        console.log(username_f_uppercase.join(''))
+        username = username_f_uppercase.join('')
         username_header.innerHTML = username
         username_modal.classList.remove('active')
         localStorage.setItem('username', username)
         username_modal_input.value = ''
+        enter_password_modal.classList.add('active')
+        enter_password_input.focus()
+        enter_password_input.value = ''
     } else {
         username_modal_input.classList.add('err')
     }
 }
+
+retype_password_modal.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        get_retype_password()
+    }
+})
+
+retype_password_button.addEventListener('click', get_retype_password)
+
+enter_password_button.addEventListener('click', get_password)
+
+enter_password_modal.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        get_password()
+    }
+})
 
 username_modal.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -83,6 +88,7 @@ const add_transaction = async () => {
 }
 
 transition_modal.addEventListener('keydown', (e) => {
+    username_modal_input.blur()
     if (e.key === 'Enter') {
         add_transaction()
     }
