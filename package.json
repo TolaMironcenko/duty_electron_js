@@ -30,7 +30,7 @@
         }
       ],
       "packagerConfig": {
-        "icon": "data/img/electron.png"
+        "icon": "data/img/icon.icns"
       },
       "makers": [
         {
