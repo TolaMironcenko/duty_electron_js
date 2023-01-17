@@ -18,9 +18,11 @@ const enter_password_button = document.querySelector('#enter_password_button')
 const retype_password_modal = document.querySelector('#retype_password')
 const retype_password_input = document.querySelector('#retype_password_input')
 const retype_password_button = document.querySelector('#retype_password_button')
+const theme_checkbox = document.querySelector('#theme_checkbox')
 
 let balance = 0
 let transactions = []
 let username = localStorage.getItem('username')?localStorage.getItem('username'):''
 let password = ''
 let retype_password = ''
+let theme = localStorage.getItem('theme')?localStorage.getItem('theme'):'white'

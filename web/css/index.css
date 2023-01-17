@@ -1,11 +1,32 @@
+:root {
+    --var-bg-app: #fff;
+    --var-bg-balance-block: #fff;
+    --var-shadow-balance-block: #333;
+    --var-body-fc: #333;
+    --var-slider-circle: #333;
+    --var-bg-theme-icon: url("../../data/img/lighticon.png");
+    --var-button-color: #aaa;
+}
+
+[dark] {
+    --var-bg-app: #333;
+    --var-bg-balance-block: #333;
+    --var-shadow-balance-block: #fff;
+    --var-body-fc: #fff;
+    --var-slider-circle: #fff;
+    --var-bg-theme-icon: url("../../data/img/darkicon.png");
+    --var-button-color: #555;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: 0.3s;
 }
 
 .app {
-    background: linear-gradient(320deg, rgba(255, 100, 200, 0.75), rgba(100, 100, 255, 0.6), rgba(100, 255, 100, 0.75));
+    background: var(--var-bg-app);
     width: 100vw;
     height: 100vh;
     overflow-y: auto;
@@ -17,6 +38,7 @@
 }
 
 .username-header {
+    color: var(--var-body-fc);
     text-align: center;
     margin: 25px 0 0 0;
 }
@@ -32,12 +54,20 @@
 
 .balance-block {
     padding: 10px 25px;
-    background: linear-gradient(10deg, rgba(255, 200, 50, 0.6), rgba(200, 50, 100, 0.6));
-    border-radius: 50px;
+    background: var(--var-bg-balance-block);
+    box-shadow: var(--var-shadow-balance-block) 0 0 20px, var(--var-shadow-balance-block) 0 0 20px;;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.header-balance {
+    color: var(--var-body-fc);
+    width: 100%;
+    text-align: start;
+    padding: 5px;
 }
 
 .button {
@@ -47,6 +77,13 @@
     border-radius: 10px;
     transition: 0.4s;
     cursor: pointer;
+    width: 100%;
+    background: var(--var-button-color);
+    color: var(--var-body-fc);
+}
+
+.header-buttons {
+    display: flex;
 }
 
 .button:hover {
@@ -67,6 +104,7 @@
 }
 
 .transaction {
+    color: var(--var-body-fc);
     padding: 10px;
     margin: 5px;
     border-radius: 10px;
@@ -98,7 +136,8 @@
 
 .transaction-modal-content {
     position: relative;
-    background: rgba(100, 100, 200, 0.4);
+    background: var(--var-bg-app);
+    box-shadow: var(--var-shadow-balance-block) 0 0 10px, var(--var-shadow-balance-block) 0 0 10px;
     padding: 10px;
     border-radius: 10px;
     display: flex;
@@ -106,6 +145,7 @@
 }
 
 .transaction-modal-header {
+    color: var(--var-body-fc);
     text-align: center;
     margin: 5px;
 }
@@ -120,11 +160,15 @@
 }
 
 .button.logout {
-    position: relative;
+    width: min-content;
+    position: absolute;
     background: none;
+    top: 5px;
+    left: 5px;
 }
 
 .logout-button-image {
+    fill: var(--var-body-fc);
     position: absolute;
     top: 0;
     left: 0;

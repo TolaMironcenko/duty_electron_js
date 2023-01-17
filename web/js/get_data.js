@@ -18,4 +18,11 @@ const get_data = async () => {
             }
         }
     )
+    if (theme === 'dark') {
+        document.body.setAttribute('dark', '');
+        theme_checkbox.checked = true;
+    } else {
+        document.body.removeAttribute('dark');
+        theme_checkbox.checked = false;
+    }
 }
