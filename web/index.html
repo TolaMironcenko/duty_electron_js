@@ -71,23 +71,35 @@
         <div class="transaction-modal active" id="username">
             <div class="transaction-modal-content">
                 <h3 class="transaction-modal-header">Username</h3>
-                <input class="transaction-modal-input" id="username_input" type="text" placeholder="Some username">
-                <button class="button modal" id="get_username_button">Next</button>
+                <input class="transaction-modal-input username" id="username_input" type="text" placeholder="Some username">
+                <button class="button modal username" id="get_username_button">Next</button>
             </div>
         </div>
         <div class="transaction-modal" id="enter_password">
             <div class="transaction-modal-content">
                 <h3 class="transaction-modal-header">Enter password</h3>
+                <div class="circles">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
                 <input class="transaction-modal-input" id="enter_password_input" type="password" placeholder="********">
-                <button class="button modal" id="enter_password_button">Next</button>
+                <button class="button modal" id="enter_password_button"></button>
             </div>
         </div>
         <div class="transaction-modal" id="retype_password">
             <div class="transaction-modal-content">
                 <h3 class="transaction-modal-header">Retype password</h3>
+                <div class="circles" id="retype">
+                    <div class="circle retype"></div>
+                    <div class="circle retype"></div>
+                    <div class="circle retype"></div>
+                    <div class="circle retype"></div>
+                </div>
                 <input class="transaction-modal-input" id="retype_password_input" type="password"
                        placeholder="********">
-                <button class="button modal" id="retype_password_button">Next</button>
+                <button class="button modal" id="retype_password_button"></button>
             </div>
         </div>
     </div>

@@ -36,7 +36,7 @@
         {
           "name": "@electron-forge/maker-dmg",
           "config": {
-            "icon": "data/img/electron.png"
+            "icon": "data/img/icon.svg"
           }
         },
         {
@@ -73,8 +73,6 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "sqlite": "^3.0.6",
-    "sqlite3": "^5.1.4",
     "update-electron-app": "^2.0.1"
   }
 }

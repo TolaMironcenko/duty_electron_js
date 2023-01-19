@@ -1,8 +1,8 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require("path");
 const fs = require('fs')
 const bcrypt = require("bcrypt");
-require('update-electron-app')()
+// require('update-electron-app')()
 
 const createWindow = () => {
     const window = new BrowserWindow({

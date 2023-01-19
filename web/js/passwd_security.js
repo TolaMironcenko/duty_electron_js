@@ -10,7 +10,11 @@ const get_password = () => {
                         enter_password_input.value = ''
                         enter_password_input.classList.remove('err')
                     } else {
+                        for (let i = 0; i < 4; i++) {
+                            circles[i].classList.add('err')
+                        }
                         enter_password_input.classList.add('err')
+                        enter_password_input.value = ''
                     }
                 })
             } else {
@@ -22,6 +26,10 @@ const get_password = () => {
             }
         })
     } else {
+        for (let i = 0; i < 4; i++) {
+            circles[i].classList.add('err')
+        }
+        enter_password_input.value = ''
         enter_password_input.classList.add('err')
     }
 }
@@ -36,5 +44,9 @@ const get_retype_password = () => {
         console.log(password, retype_password)
     } else {
         retype_password_input.classList.add('err')
+        for (let i = 0; i < 4; i++) {
+            circles_retype[i].classList.add('err')
+        }
+        retype_password_input.value = ''
     }
 }

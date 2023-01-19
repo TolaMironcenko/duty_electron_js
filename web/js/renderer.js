@@ -44,12 +44,56 @@ retype_password_modal.addEventListener('keydown', (e) => {
     }
 })
 
+retype_password_input.addEventListener('keyup', (e) => {
+    console.log(e.target.value)
+
+    for (var i = 0; i < 4; i++) {
+        circles_retype[i].classList.remove('fill')
+        circles_retype[i].classList.remove('err')
+    }
+
+    for (var i = 0; i < e.target.value.length; i++) {
+        circles_retype[i].classList.add('fill')
+    }
+
+    if (e.target.value.length > 4) {
+        e.target.value = e.target.value.slice(0, -1)
+    }
+
+    if (e.target.value.length === 4) {
+        get_retype_password()
+    }
+})
+
 retype_password_button.addEventListener('click', get_retype_password)
 
 enter_password_button.addEventListener('click', get_password)
 
 enter_password_modal.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
+        get_password()
+    }
+})
+
+enter_password_modal.addEventListener('click', () => enter_password_input.focus())
+
+enter_password_input.addEventListener('keyup', (e) => {
+    console.log(e.target.value)
+
+    for (var i = 0; i < 4; i++) {
+        circles[i].classList.remove('fill')
+        circles[i].classList.remove('err')
+    }
+
+    for (var i = 0; i < e.target.value.length; i++) {
+        circles[i].classList.add('fill')
+    }
+
+    if (e.target.value.length > 4) {
+        e.target.value = e.target.value.slice(0, -1)
+    }
+
+    if (e.target.value.length === 4) {
         get_password()
     }
 })

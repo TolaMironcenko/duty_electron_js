@@ -1,11 +1,19 @@
 .transaction-modal-input {
-    padding: 10px;
+    /*padding: 10px;*/
     border-radius: 10px;
     border: rgba(0, 0, 0, 0.75);
-    /*background: rgba(240, 200, 200, 0.9);*/
-    margin: 5px;
     box-shadow: var(--var-shadow-balance-block) 0 0 5px, var(--var-shadow-balance-block) 0 0 5px;
     transition: 0.3s;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.transaction-modal-input.username {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
 }
 
 .transaction-modal-input:focus {
@@ -16,6 +24,6 @@
     display: none;
 }
 
-.transaction-modal-input.err {
-    border: 2px solid rgba(200, 0, 0, 0.5);
-}
+/*.transaction-modal-input.err {*/
+/*    border: 2px solid rgba(200, 0, 0, 0.5);*/
+/*}*/
