@@ -8,6 +8,14 @@ if (username !== '') {
     enter_password_input.focus()
 }
 
+main_menu_button.addEventListener('click', () => {
+    if (main_menu.classList.contains('active')) {
+        main_menu.classList.remove('active')
+    } else {
+        main_menu.classList.add('active')
+    }
+})
+
 const equals = (transactions, valuetransactions) => {
     if (transactions.length !== valuetransactions.length) {
         return false

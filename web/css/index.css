@@ -7,6 +7,7 @@
     --var-bg-theme-icon: url("../../data/img/lighticon.png");
     --var-button-color: #aaa;
     --var-red: rgba(200, 0, 0, 0.5);
+    --var-hover-bg: #999;
 }
 
 [dark] {
@@ -17,6 +18,7 @@
     --var-slider-circle: #fff;
     --var-bg-theme-icon: url("../../data/img/darkicon.png");
     --var-button-color: #555;
+    --var-hover-bg: #555;
 }
 
 * {

@@ -21,8 +21,8 @@ const retype_password_button = document.querySelector('#retype_password_button')
 const theme_checkbox = document.querySelector('#theme_checkbox')
 const circles = document.querySelectorAll('.circle')
 const circles_retype = document.querySelectorAll('.circle.retype')
-
-console.log(circles_retype)
+const main_menu_button = document.querySelector('#main_menu_button')
+const main_menu = document.querySelector('.main-menu')
 
 let balance = 0
 let transactions = []
