@@ -10,9 +10,13 @@ if (username !== '') {
 
 main_menu_button.addEventListener('click', () => {
     if (main_menu.classList.contains('active')) {
+        menu_button_lines[0].classList.remove('active1')
+        menu_button_lines[1].classList.remove('active2')
         main_menu.classList.remove('active')
     } else {
         main_menu.classList.add('active')
+        menu_button_lines[0].classList.add('active1')
+        menu_button_lines[1].classList.add('active2')
     }
 })
 

@@ -23,6 +23,7 @@ const circles = document.querySelectorAll('.circle')
 const circles_retype = document.querySelectorAll('.circle.retype')
 const main_menu_button = document.querySelector('#main_menu_button')
 const main_menu = document.querySelector('.main-menu')
+const menu_button_lines = document.querySelectorAll('.line')
 
 let balance = 0
 let transactions = []

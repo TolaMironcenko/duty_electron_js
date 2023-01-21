@@ -1,15 +1,30 @@
 .button.menu {
     width: max-content;
     position: absolute;
-    top: 40px;
+    top: 5px;
     left: 5px;
-    display: none;
+    background: var(--var-bg-app);
+}
+
+.line {
+    background: var(--var-shadow-balance-block);
+    padding: 1px;
+    margin-top: 2px;
+    width: 15px;
+}
+
+.line.active1 {
+    transform: translateY(2px)  rotate(45deg);
+}
+
+.line.active2 {
+    transform: translateY(-2px)  rotate(-45deg);
 }
 
 .main-menu {
     position: absolute;
-    top: 80px;
-    left: 75px;
+    top: 40px;
+    left: 55px;
     transform: scale(0);
     z-index: 1;
     background: var(--var-bg-app);
@@ -20,10 +35,14 @@
 }
 
 .main-menu-item {
-    width: max-content;
+    width: 100%;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 10px;
+    background: inherit;
+    display: flex;
+    align-items: center;
+    border: none;
     color: var(--var-body-fc);
 }
 
