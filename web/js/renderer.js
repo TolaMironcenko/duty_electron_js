@@ -118,7 +118,7 @@ username_modal.addEventListener('keydown', (e) => {
 
 get_data()
 if (transactions.length === 0) {
-    all_transactions_block.innerHTML = 'Пока что нет транзакций'
+    all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
 }
 loader.classList.remove('active')
 console.log(username, transactions, balance)
@@ -161,3 +161,14 @@ button_minus.addEventListener('click', () => {
 })
 
 add_button.addEventListener('click', add_transaction)
+
+clear_history_button.addEventListener('click', async () => {
+    await window.versions.clear_all().then(
+        () => {
+            main_menu.classList.remove('active')
+            get_data()
+            menu_button_lines[0].classList.remove('active1')
+            menu_button_lines[1].classList.remove('active2')
+        }
+    )
+})

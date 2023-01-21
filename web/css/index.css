@@ -36,6 +36,10 @@
     overflow-x: hidden;
 }
 
+.app-p {
+    color: var(--var-body-fc);
+}
+
 .app::-webkit-scrollbar {
     display: none;
 }

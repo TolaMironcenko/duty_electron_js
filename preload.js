@@ -10,6 +10,7 @@ contextBridge.exposeInMainWorld('versions', {
     set_app_password: (password) => ipcRenderer.send('set_app_password', password),
     validate_password: (password) => ipcRenderer.invoke('validate_password', password),
     have_password: () => ipcRenderer.invoke('have_password'),
-    delete_password: () => ipcRenderer.invoke('delete_password')
+    delete_password: () => ipcRenderer.invoke('delete_password'),
+    clear_all: () => ipcRenderer.invoke('clear_all'),
     // we can also expose variables, not just functions
 })

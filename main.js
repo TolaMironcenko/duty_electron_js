@@ -42,6 +42,10 @@ const createWindow = () => {
     ipcMain.handle('delete_password', () => {
         fs.writeFileSync(__dirname + '/data/password', '')
     })
+    ipcMain.handle('clear_all', () => {
+        fs.writeFileSync(__dirname + '/data/transactions', '')
+        fs.writeFileSync(__dirname + '/data/balance', '0')
+    })
 
     window.loadFile(__dirname + '/web/index.html')
 }

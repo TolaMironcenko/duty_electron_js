@@ -15,6 +15,8 @@ const get_data = async () => {
                         create_transaction_block(parseFloat(transactions[i]))
                     }
                 }
+            } else {
+                all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
             }
         }
     )
