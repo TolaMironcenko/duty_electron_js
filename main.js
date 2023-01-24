@@ -30,7 +30,7 @@ const createWindow = () => {
     })
     ipcMain.on('add_transaction', (event, sum) => {
         let balance = fs.readFileSync(__dirname + '/data/balance', 'utf-8')
-        fs.writeFileSync(__dirname + '/data/balance', (parseFloat(balance) + parseFloat(sum)).toString())
+        fs.writeFileSync(__dirname + '/data/balance', ((parseFloat(balance) + parseFloat(sum)).toFixed(2)).toString())
         fs.appendFileSync(__dirname + '/data/transactions', sum.toString() + '\n')
     })
     ipcMain.on('set_app_password', async (event, password) => {
