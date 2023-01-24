@@ -11,7 +11,7 @@ const get_data = async () => {
                 if (!equals(transactions, value.split('\n'))) {
                     transactions = value.split('\n')
                     all_transactions_block.innerHTML = ''
-                    for (var i = 0; i < transactions.length; i++) {
+                    for (let i = 0; i < transactions.length; i++) {
                         create_transaction_block(parseFloat(transactions[i]))
                     }
                 }

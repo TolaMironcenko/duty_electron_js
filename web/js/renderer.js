@@ -60,12 +60,12 @@ retype_password_modal.addEventListener('keydown', (e) => {
 retype_password_input.addEventListener('keyup', (e) => {
     console.log(e.target.value)
 
-    for (var i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++) {
         circles_retype[i].classList.remove('fill')
         circles_retype[i].classList.remove('err')
     }
 
-    for (var i = 0; i < e.target.value.length; i++) {
+    for (let i = 0; i < e.target.value.length; i++) {
         circles_retype[i].classList.add('fill')
     }
 
@@ -93,12 +93,12 @@ enter_password_modal.addEventListener('click', () => enter_password_input.focus(
 enter_password_input.addEventListener('keyup', (e) => {
     console.log(e.target.value)
 
-    for (var i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++) {
         circles[i].classList.remove('fill')
         circles[i].classList.remove('err')
     }
 
-    for (var i = 0; i < e.target.value.length; i++) {
+    for (let i = 0; i < e.target.value.length; i++) {
         circles[i].classList.add('fill')
     }
 

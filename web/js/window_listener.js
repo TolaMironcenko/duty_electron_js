@@ -3,6 +3,8 @@ window.addEventListener('keydown', (e) => {
         transition_modal.classList.remove('active')
         transaction_modal_input.blur()
         main_menu.classList.remove('active')
+        menu_button_lines[0].classList.remove('active1')
+        menu_button_lines[1].classList.remove('active2')
     }
     if (e.key === 'm') {
         if (main_menu.classList.contains('active')) {
