@@ -1,8 +1,7 @@
 .loader {
-    border: none;
     padding: 0;
     border-radius: 50%;
-    border-top: none;
+    border-style: none;
     animation: loading 2s linear infinite;
 }
 

@@ -14,7 +14,6 @@ const create_transaction_block = (sum) => {
             transaction_block.classList.add('minus')
             transaction_sum_p.innerHTML = sum
         }
-        transaction_block.style = 'animation'
         all_transactions_block.append(transaction_block)
     }
 }
