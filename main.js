@@ -16,6 +16,12 @@ const createWindow = () => {
     })
     window.setMenuBarVisibility(false)
 
+    ipcMain.on('set_username', (event, username) => {
+        fs.writeFileSync(__dirname + '/data/username', username.toString())
+    })
+    ipcMain.handle('get_username', () => {
+        return fs.readFileSync(__dirname + '/data/username')
+    })
     ipcMain.handle('get_balance', () => {
         return fs.readFileSync(__dirname + '/data/balance', 'utf-8')
     })

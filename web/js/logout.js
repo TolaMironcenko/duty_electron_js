@@ -1,6 +1,7 @@
-logout_button.addEventListener('click', () => {
+logout_button.addEventListener('click', async () => {
     username = ''
     username_modal.classList.add('active')
+    window.versions.set_username('')
     // localStorage.clear()
     localStorage.removeItem('username');
     username_modal_input.focus()

@@ -20,6 +20,11 @@ const get_data = async () => {
             }
         }
     )
+    await window.versions.get_username().then(
+        (value) => {
+            username = value
+        }
+    )
     if (theme === 'dark') {
         document.body.setAttribute('dark', '');
         theme_checkbox.checked = true;

@@ -32,12 +32,13 @@ const equals = (transactions, valuetransactions) => {
     return true
 }
 
-const get_username = () => {
+const get_username = async () => {
     if (username_modal_input.value !== '' && !/^\s+$/.test(username_modal_input.value)) {
         let username_f_uppercase = username_modal_input.value.split('')
         username_f_uppercase[0] = username_f_uppercase[0].toUpperCase()
         console.log(username_f_uppercase.join(''))
         username = username_f_uppercase.join('')
+        window.versions.set_username(username)
         username_header.innerHTML = username
         username_modal.classList.remove('active')
         localStorage.setItem('username', username)
@@ -153,11 +154,13 @@ transition_modal.addEventListener('keydown', (e) => {
 button_plus.addEventListener('click', () => {
     transition_modal.classList.add('active')
     transition_modal.id = 'plus'
+    transaction_modal_input.focus()
 })
 
 button_minus.addEventListener('click', () => {
     transition_modal.classList.add('active')
     transition_modal.id = 'minus'
+    transaction_modal_input.focus()
 })
 
 add_button.addEventListener('click', add_transaction)
