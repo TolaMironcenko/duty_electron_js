@@ -35,6 +35,7 @@ const balancesblock = document.querySelector('.balance')
 
 let balance = 0
 let main_balance_name_value = ''
+let chets = []
 let transactions = []
 let username = localStorage.getItem('username')?localStorage.getItem('username'):''
 let password = ''
