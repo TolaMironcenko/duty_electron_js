@@ -5,6 +5,12 @@ const get_data = async () => {
             header_balance.innerHTML = balance
         }
     )
+    await window.versions.get_main_balance_name().then(
+        (value) => {
+            main_balance_name_value = value
+            main_balance_name.innerHTML = main_balance_name_value
+        }
+    )
     await window.versions.get_transactions().then(
         (value) => {
             if (value !== '') {

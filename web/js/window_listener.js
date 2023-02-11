@@ -5,6 +5,8 @@ window.addEventListener('keydown', (e) => {
         main_menu.classList.remove('active')
         menu_button_lines[0].classList.remove('active1')
         menu_button_lines[1].classList.remove('active2')
+        add_chet_input.blur()
+        add_chet_modal.classList.remove('active')
     }
     if (e.key === 'm') {
         if (main_menu.classList.contains('active')) {
@@ -29,5 +31,12 @@ window.addEventListener('keydown', (e) => {
         transition_modal.classList.add('active')
         transition_modal.id = 'minus'
         transaction_modal_input.focus()
+    }
+})
+
+window.addEventListener('click', async (e) => {
+    if (e.target.classList.contains('exit')) {
+        balancesblock.removeChild(document.querySelector('#'+e.target.id))
+        await window.versions.delete_chet(e.target.id)
     }
 })

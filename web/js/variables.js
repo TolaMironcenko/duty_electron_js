@@ -25,8 +25,16 @@ const main_menu_button = document.querySelector('#main_menu_button')
 const main_menu = document.querySelector('.main-menu')
 const menu_button_lines = document.querySelectorAll('.line')
 const clear_history_button = document.querySelector('#clear_history_button')
+const main_balance_name = document.querySelector('#main_balance_name')
+const add_chet_button = document.querySelector('#add_chet_button')
+const add_chet_modal = document.querySelector('#add_chet_modal')
+const add_chet_input = document.querySelector('#new_chet_name_input')
+const add_chet_name_button = document.querySelector('#new_chet_name_button')
+const close_add_chet_modal = document.querySelector('#close_add_chet_modal')
+const balancesblock = document.querySelector('.balance')
 
 let balance = 0
+let main_balance_name_value = ''
 let transactions = []
 let username = localStorage.getItem('username')?localStorage.getItem('username'):''
 let password = ''
