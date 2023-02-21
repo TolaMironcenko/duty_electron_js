@@ -50,76 +50,24 @@
     margin: 25px 0 0 0;
 }
 
-/* .balances {
-    display: flex;
-    flex-direction: row;
-} */
-
 .balance {
-    width: 100%;
-    margin: auto;
-    height: 200px;
-    overflow-x: auto;
+    width: 100vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 20px 0 20px 0;
 }
 
-.balance::-webkit-scrollbar {
-    display: none;
-}
-
 .balance-block {
-    position: relative;
-    cursor: pointer;
-    margin: 10px;
-    height: 85%;
     padding: 10px 25px;
     background: var(--var-bg-balance-block);
-    box-shadow: var(--var-shadow-balance-block) 0 0 20px, var(--var-shadow-balance-block) 0 0 20px;
+    box-shadow: var(--var-shadow-balance-block) 0 0 20px, var(--var-shadow-balance-block) 0 0 20px;;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: 0.3s newblock;
-}
-
-.balance-block.button {
-    margin: 10px;
-    height: 85%;
-    width: max-content;
-    padding: 10px 25px;
-    background: var(--var-bg-balance-block);
-    box-shadow: var(--var-shadow-balance-block) 0 0 20px, var(--var-shadow-balance-block) 0 0 20px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-}
-
-.balance-block.button:hover {
-    background-color: var(--var-hover-bg);
-}
-
-@keyframes newblock {
-    0% {
-        height: 0;
-        padding: 0;
-        overflow: hidden;
-    }
-
-    100% {
-        height: 85%;
-        padding: 10px 25px;
-    }
-}
-
-.balance-name {
-    color: var(--var-body-fc);
-    font-size: 20px;
-    width: 100%;
-    text-align: start;
 }
 
 .header-balance {
@@ -159,7 +107,7 @@
     flex-wrap: wrap;
     /*flex-direction: column;*/
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
 }
 
 .transaction {
@@ -217,16 +165,6 @@
     background: transparent;
     cursor: pointer;
 }
-
-/* .exit.chet {
-    /* position: absolute; */
-    /* top: 10px; */
-    /* right: 10px; */
-    position: relative;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-} */
 
 .button.logout {
     width: max-content;
@@ -295,7 +233,6 @@
     from {
         transform: scale(0);
     }
-
     to {
         transform: scale(1);
     }

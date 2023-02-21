@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+    <meta charset="UTF-8"/>
+    <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+            http-equiv="X-Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+    />
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/loader.css">
     <link rel="stylesheet" href="css/transaction_modal_input.css">
@@ -12,121 +17,108 @@
     <link rel="stylesheet" href="css/menu.css">
     <title>Duty</title>
 </head>
-
 <body>
-    <div class="app">
+<div class="app">
 
-        <button class="button menu" id="main_menu_button">
-            <div class="line"></div>
-            <div class="line"></div>
-            <!--        menu-->
-        </button>
-        <div class="main-menu">
-            <button class="main-menu-item" id="clear_history_button">Clear history</button>
-            <div class="main-menu-item">
-                <p>Theme</p>
-                <label class="switch">
-                    <input type="checkbox" id="theme_checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <button class="main-menu-item" id="logout_button">
-                <p>Logout</p>
-                <svg class="logout-button-image" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.971 384.971"
-                    style="enable-background:new 0 0 384.971 384.971;" xml:space="preserve">
+    <button class="button menu" id="main_menu_button">
+        <div class="line"></div>
+        <div class="line"></div>
+        <!--        menu-->
+    </button>
+    <div class="main-menu">
+        <button class="main-menu-item" id="clear_history_button">Clear history</button>
+        <div class="main-menu-item">
+            <p>Theme</p>
+            <label class="switch">
+                <input type="checkbox" id="theme_checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <button class="main-menu-item" id="logout_button">
+            <p>Logout</p>
+            <svg class="logout-button-image" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                 x="0px"
+                 y="0px"
+                 viewBox="0 0 384.971 384.971" style="enable-background:new 0 0 384.971 384.971;"
+                 xml:space="preserve">
                     <g>
                         <g id="Sign_Out">
                             <path d="M180.455,360.91H24.061V24.061h156.394c6.641,0,12.03-5.39,12.03-12.03s-5.39-12.03-12.03-12.03H12.03
                                 C5.39,0.001,0,5.39,0,12.031V372.94c0,6.641,5.39,12.03,12.03,12.03h168.424c6.641,0,12.03-5.39,12.03-12.03
-                                C192.485,366.299,187.095,360.91,180.455,360.91z" />
-                            <path
-                                d="M381.481,184.088l-83.009-84.2c-4.704-4.752-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l62.558,63.46H96.279
+                                C192.485,366.299,187.095,360.91,180.455,360.91z"/>
+                            <path d="M381.481,184.088l-83.009-84.2c-4.704-4.752-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l62.558,63.46H96.279
                                 c-6.641,0-12.03,5.438-12.03,12.151c0,6.713,5.39,12.151,12.03,12.151h247.74l-62.558,63.46c-4.704,4.752-4.704,12.439,0,17.179
-                                c4.704,4.752,12.319,4.752,17.011,0l82.997-84.2C386.113,196.588,386.161,188.756,381.481,184.088z" />
+                                c4.704,4.752,12.319,4.752,17.011,0l82.997-84.2C386.113,196.588,386.161,188.756,381.481,184.088z"/>
                         </g>
                     </g>
                 </svg>
-            </button>
-        </div>
+        </button>
+    </div>
 
-        <h1 class="username-header" id="username_header"></h1>
+    <h1 class="username-header" id="username_header"></h1>
 
-        <div class="balance">
-            <div class="balance-block">
-                <h1 class="balance-name" id="main_balance_name">Main</h1>
-                <h1 class="header-balance">0</h1>
-                <div class="header-buttons">
-                    <button class="button plus">+</button>
-                    <button class="button minus">-</button>
-                </div>
-            </div>
-            <button class="balance-block button" id="add_chet_button">
-                +
-            </button>
-        </div>
-
-        <div class="transactions">
-            <div class="loader active"></div>
-        </div>
-
-        <div class="transaction-modal" id="transaction_sum">
-            <div class="transaction-modal-content">
-                <button class="exit">✖</button>
-                <h3 class="transaction-modal-header">Sum</h3>
-                <input class="transaction-modal-input username" id="transaction_sum_input" type="number" min="0"
-                    placeholder="100">
-                <button class="button modal username">Add</button>
-            </div>
-        </div>
-
-        <div class="auth-or-register">
-            <div class="transaction-modal active" id="username">
-                <div class="transaction-modal-content">
-                    <h3 class="transaction-modal-header">Username</h3>
-                    <input class="transaction-modal-input username" id="username_input" type="text"
-                        placeholder="Some username">
-                    <button class="button modal username" id="get_username_button">Next</button>
-                </div>
-            </div>
-            <div class="transaction-modal" id="enter_password">
-                <div class="transaction-modal-content">
-                    <h3 class="transaction-modal-header">Enter password</h3>
-                    <div class="circles">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                    </div>
-                    <input class="transaction-modal-input" id="enter_password_input" type="password"
-                        placeholder="********">
-                    <button class="button modal" id="enter_password_button"></button>
-                </div>
-            </div>
-            <div class="transaction-modal" id="retype_password">
-                <div class="transaction-modal-content">
-                    <h3 class="transaction-modal-header">Retype password</h3>
-                    <div class="circles" id="retype">
-                        <div class="circle retype"></div>
-                        <div class="circle retype"></div>
-                        <div class="circle retype"></div>
-                        <div class="circle retype"></div>
-                    </div>
-                    <input class="transaction-modal-input" id="retype_password_input" type="password"
-                        placeholder="********">
-                    <button class="button modal" id="retype_password_button"></button>
-                </div>
-            </div>
-        </div>
-        <div class="transaction-modal" id="add_chet_modal">
-            <div class="transaction-modal-content">
-                <button class="exit" id="close_add_chet_modal">✖</button>
-                <h3 class="transaction-modal-header">Chet name</h3>
-                <input type="text" class="transaction-modal-input username" id="new_chet_name_input" placeholder="New chet">
-                <button class="button modal username" id="new_chet_name_button">Next</button>
+    <div class="balance">
+        <div class="balance-block">
+            <h1 class="header-balance">0</h1>
+            <div class="header-buttons">
+                <button class="button plus">+</button>
+                <button class="button minus">-</button>
             </div>
         </div>
     </div>
+    <div class="transactions">
+        <div class="loader active"></div>
+    </div>
+
+    <div class="transaction-modal" id="transaction_sum">
+        <div class="transaction-modal-content">
+            <button class="exit">✖</button>
+            <h3 class="transaction-modal-header">Sum</h3>
+            <input class="transaction-modal-input username" id="transaction_sum_input" type="number" min="0"
+                   placeholder="100">
+            <button class="button modal username">Add</button>
+        </div>
+    </div>
+
+    <div class="auth-or-register">
+        <div class="transaction-modal active" id="username">
+            <div class="transaction-modal-content">
+                <h3 class="transaction-modal-header">Username</h3>
+                <input class="transaction-modal-input username" id="username_input" type="text"
+                       placeholder="Some username">
+                <button class="button modal username" id="get_username_button">Next</button>
+            </div>
+        </div>
+        <div class="transaction-modal" id="enter_password">
+            <div class="transaction-modal-content">
+                <h3 class="transaction-modal-header">Enter password</h3>
+                <div class="circles">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+                <input class="transaction-modal-input" id="enter_password_input" type="password" placeholder="********">
+                <button class="button modal" id="enter_password_button"></button>
+            </div>
+        </div>
+        <div class="transaction-modal" id="retype_password">
+            <div class="transaction-modal-content">
+                <h3 class="transaction-modal-header">Retype password</h3>
+                <div class="circles" id="retype">
+                    <div class="circle retype"></div>
+                    <div class="circle retype"></div>
+                    <div class="circle retype"></div>
+                    <div class="circle retype"></div>
+                </div>
+                <input class="transaction-modal-input" id="retype_password_input" type="password"
+                       placeholder="********">
+                <button class="button modal" id="retype_password_button"></button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script src="js/variables.js"></script>
 <script src="js/get_data.js"></script>
@@ -136,6 +128,4 @@
 <script src="js/logout.js"></script>
 <script src="js/window_listener.js"></script>
 <script src="js/change_theme.js"></script>
-<script src="js/add_chet.js"></script>
-
 </html>
