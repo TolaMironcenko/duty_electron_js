@@ -1,43 +1,3 @@
-const add_balance_block = (chet_name, balance) => {
-    const balanceblock = document.createElement('div')
-    balanceblock.classList.add('balance-block')
-    balanceblock.id = chet_name
-
-    if (chet_name !== 'main') {
-        const deletechetbutton = document.createElement('button')
-        deletechetbutton.classList.add('exit')
-        // deletechetbutton.classList.add('chet')
-        deletechetbutton.innerHTML = '✖'
-        deletechetbutton.id = chet_name
-        balanceblock.append(deletechetbutton)
-    }
-
-    const balancename = document.createElement('h1')
-    balancename.classList.add('balance-name')
-    balancename.id = chet_name + '_balance_name'
-    balancename.innerHTML = chet_name
-    const headerbalance = document.createElement('h1')
-    headerbalance.classList.add('header-balance')
-    headerbalance.id = chet_name + '_balance'
-    headerbalance.innerHTML = balance
-
-    const plusbutton = document.createElement('button')
-    plusbutton.classList.add('button')
-    plusbutton.classList.add('plus')
-    plusbutton.innerHTML = '+'
-    const minusbutton = document.createElement('button')
-    minusbutton.classList.add('button')
-    minusbutton.classList.add('minus')
-    minusbutton.innerHTML = '-'
-    const buttons = document.createElement('div')
-    buttons.classList.add('header-buttons')
-    buttons.append(plusbutton, minusbutton)
-
-    // balancesblock.removeChild(add_chet_button)
-    balanceblock.append(balancename, headerbalance, buttons)
-    balancesblock.append(balanceblock, add_chet_button)
-}
-
 const get_data = async () => {
     await window.versions.get_balance().then(
         (value) => {
@@ -45,21 +5,6 @@ const get_data = async () => {
             header_balance.innerHTML = balance
         }
     )
-    // await window.versions.get_all_chets().then(
-    //     value => {
-    //         // console.log('value = ', JSON.stringify(value))
-    //         // console.log('c===v: ', JSON.stringify(value) !== JSON.stringify(chets))
-    //         if (JSON.stringify(chets) !== JSON.stringify(value)) {
-    //             chets = value
-    //             balancesblock.innerHTML = ''
-    //             for (let i = 0; i < chets.length; i++) {
-    //                 console.log('iiiiiiiiiii: ', i)
-    //                 add_balance_block(chets[i].name, chets[i].balance)
-    //             }
-    //             // console.log('chets = ', JSON.stringify(chets))
-    //         }
-    //     }
-    // )
     await window.versions.get_main_balance_name().then(
         (value) => {
             main_balance_name_value = value

@@ -55,32 +55,20 @@ const createWindow = () => {
         fs.writeFileSync(__dirname + '/data/chets/main/transactions', '')
         fs.writeFileSync(__dirname + '/data/chets/main/balance', '0')
     })
-    ipcMain.handle('new_chet', (event, chet_name, balance) => {
-        fs.mkdirSync(__dirname + '/data/chets/' + chet_name + '/')
-        fs.writeFileSync(__dirname + '/data/chets/' + chet_name + '/transactions', '')
-        fs.writeFileSync(__dirname + '/data/chets/' + chet_name + '/balance', balance.toString())
-        fs.writeFileSync(__dirname + '/data/chets/' + chet_name + '/name', chet_name.toString())
+    ipcMain.on('new_chet', (event, chet_name, balance) => {
+        fs.mkdir(__dirname + '/data/chets/' + chet_name + '/', err => {
+            if (err) throw err
+            fs.writeFileSync(__dirname + '/data/chets/' + chet_name + '/transactions', '')
+            fs.writeFileSync(__dirname + '/data/chets/' + chet_name + '/balance', balance.toString())
+            fs.writeFileSync(__dirname + '/data/chets/' + chet_name + '/name', chet_name.toString())
+        })
     })
     ipcMain.on('delete_chet', (event, chet_name) => {
         if (chet_name !== 'main') {
-            fs.rmdir(__dirname + '/data/chets/' + chet_name, {recursive: true}, err => {
+            fs.rmdir(__dirname + '/data/chets/' + chet_name, err => {
                 if (err) throw err
             })
         }
-    })
-    ipcMain.handle('get_all_chets', () => {
-        const chets = fs.readdirSync(__dirname + '/data/chets/')
-        let ret = []
-        for (let i = 0; i < chets.length; i++) {
-            ret.push(
-                {
-                    name: fs.readFileSync(__dirname + '/data/chets/' + chets[i] + '/name').toString(), 
-                    balance: fs.readFileSync(__dirname + '/data/chets/' + chets[i] + '/balance').toString(),
-                    transactions: fs.readFileSync(__dirname + '/data/chets/' + chets[i] + '/transactions').toString(),
-                }
-            )
-        }
-        return ret
     })
 
     window.loadFile(__dirname + '/web/index.html')
@@ -93,11 +81,12 @@ app.whenReady().then(() => {
                 if(err) throw err
                 fs.writeFileSync(__dirname + '/data/chets/main/transactions', '')
                 fs.writeFileSync(__dirname + '/data/chets/main/balance', '0')
-                fs.writeFileSync(__dirname + '/data/chets/main/name', 'main')
+                fs.writeFileSync(__dirname + '/data/chets/main/name', 'Main')
                 fs.writeFileSync(__dirname + '/data/username', '')
                 fs.writeFileSync(__dirname + '/data/password', '')
             })
         }
+        console.log(files)
     })
     createWindow()
 
