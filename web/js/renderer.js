@@ -1,9 +1,26 @@
 username_modal_input.focus()
 
+window.versions.get_transactions().then(
+    (value) => {
+        if (value !== '') {
+            if (!equals(transactions, value.split('\n'))) {
+                transactions = value.split('\n')
+                all_transactions_block.innerHTML = ''
+                for (let i = 0; i < transactions.length; i++) {
+                    create_transaction_block(parseFloat(transactions[i]))
+                }
+            }
+        } else {
+            all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
+        }
+    }
+)
+
 if (username !== '') {
     username_header.innerHTML = username
     username_modal.classList.remove('active')
     username_modal_input.blur()
+    username_modal_input.value = ''
     enter_password_modal.classList.add('active')
     enter_password_input.focus()
 }
@@ -134,10 +151,37 @@ exit_button.addEventListener('click', () => {
 })
 
 const add_transaction = async () => {
+    console.log(transition_modal.id)
     if (transition_modal.id === 'plus') {
-        await window.versions.add_transaction(transaction_modal_input.value)
+        await window.versions.add_transaction_for_chet(transaction_modal_input.value, add_button.id)
+        await window.versions.get_transactions_for_chet(add_button.id).then(
+            (value) => {
+                if (value !== '') {
+                    transactions = value.split('\n')
+                    all_transactions_block.innerHTML = ''
+                    for (let i = 0; i < transactions.length; i++) {
+                        create_transaction_block(parseFloat(transactions[i]))
+                    }
+                } else {
+                    all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
+                }
+            }
+        )
     } else if (transition_modal.id === 'minus') {
-        await window.versions.add_transaction(0 - transaction_modal_input.value)
+        await window.versions.add_transaction_for_chet(0 - transaction_modal_input.value, add_button.id)
+        await window.versions.get_transactions_for_chet(add_button.id).then(
+            (value) => {
+                if (value !== '') {
+                    transactions = value.split('\n')
+                    all_transactions_block.innerHTML = ''
+                    for (let i = 0; i < transactions.length; i++) {
+                        create_transaction_block(parseFloat(transactions[i]))
+                    }
+                } else {
+                    all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
+                }
+            }
+        )
     }
 
     transaction_modal_input.value = ''
@@ -170,8 +214,53 @@ clear_history_button.addEventListener('click', async () => {
         () => {
             main_menu.classList.remove('active')
             get_data()
+            window.versions.get_transactions_for_chet('main').then(
+                (value) => {
+                    if (value !== '') {
+                        transactions = value.split('\n')
+                        all_transactions_block.innerHTML = ''
+                        for (let i = 0; i < transactions.length; i++) {
+                            create_transaction_block(parseFloat(transactions[i]))
+                        }
+                    } else {
+                        all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
+                    }
+                }
+            )
             menu_button_lines[0].classList.remove('active1')
             menu_button_lines[1].classList.remove('active2')
         }
     )
+})
+
+balancesblock.addEventListener('click', async (e) => {
+    if (e.target.classList.contains('balance-block') || e.target.classList.contains('balance-name') || e.target.classList.contains('header-balance')) {
+        await window.versions.get_transactions_for_chet(e.target.id).then(
+            (value) => {
+                if (value !== '') {
+                    transactions = value.split('\n')
+                    all_transactions_block.innerHTML = ''
+                    for (let i = 0; i < transactions.length; i++) {
+                        create_transaction_block(parseFloat(transactions[i]))
+                    }
+                } else {
+                    all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
+                }
+            }
+        )
+    }
+
+    if (e.target.classList.contains('button') && e.target.classList.contains('plus')) {
+        transition_modal.classList.add('active')
+        transition_modal.id = 'plus'
+        transaction_modal_input.focus()
+        add_button.id = e.target.id
+    }
+
+    if (e.target.classList.contains('button') && e.target.classList.contains('minus')) {
+        transition_modal.classList.add('active')
+        transition_modal.id = 'minus'
+        transaction_modal_input.focus()
+        add_button.id = e.target.id
+    }
 })

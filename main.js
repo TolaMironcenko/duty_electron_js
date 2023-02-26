@@ -28,6 +28,11 @@ const createWindow = () => {
     ipcMain.handle('get_balance', () => {
         return fs.readFileSync(__dirname + '/data/chets/main/balance', 'utf-8')
     })
+    // ipcMain.handle('get_all_chets', () => {
+    //     let chets = fs.readdirSync(__dirname + '/data/chets/')
+    //     console.log(chets)
+    //     return chets
+    // })
     ipcMain.handle('get_transactions', () => {
         return fs.readFileSync(__dirname + '/data/chets/main/transactions', 'utf-8')
     })
@@ -35,6 +40,24 @@ const createWindow = () => {
         let balance = fs.readFileSync(__dirname + '/data/chets/main/balance', 'utf-8')
         fs.writeFileSync(__dirname + '/data/chets/main/balance', ((parseFloat(balance) + parseFloat(sum)).toFixed(2)).toString())
         fs.appendFileSync(__dirname + '/data/chets/main/transactions', sum.toString() + '\n')
+    })
+    ipcMain.handle('add_transaction_for_chet', (event, sum, chet_name) => {
+        // console.log(sum, chet_name)
+        if (chet_name !== 'main') {
+            let balance = fs.readFileSync(__dirname + '/data/chets/' + chet_name + '/balance', 'utf-8')
+            let mainbalance = fs.readFileSync(__dirname + '/data/chets/main/balance', 'utf-8')
+            fs.writeFileSync(__dirname + '/data/chets/' + chet_name + '/balance', ((parseFloat(balance) + parseFloat(sum)).toFixed(2)).toString())
+            fs.writeFileSync(__dirname + '/data/chets/main/balance', ((parseFloat(mainbalance) + parseFloat(sum)).toFixed(2)).toString())
+            fs.appendFileSync(__dirname + '/data/chets/' + chet_name + '/transactions', sum.toString() + '\n')
+            fs.appendFileSync(__dirname + '/data/chets/main/transactions', sum.toString() + '\n')
+        } else {
+            let mainbalance = fs.readFileSync(__dirname + '/data/chets/main/balance', 'utf-8')
+            fs.writeFileSync(__dirname + '/data/chets/main/balance', ((parseFloat(mainbalance) + parseFloat(sum)).toFixed(2)).toString())
+            fs.appendFileSync(__dirname + '/data/chets/main/transactions', sum.toString() + '\n')
+        }
+    })
+    ipcMain.handle('get_transactions_for_chet', (event, chet_name) => {
+        return fs.readFileSync(__dirname + '/data/chets/' + chet_name + '/transactions', 'utf-8')
     })
     ipcMain.on('set_app_password', async (event, password) => {
         const salt = await bcrypt.genSalt(10);

@@ -18,5 +18,7 @@ contextBridge.exposeInMainWorld('versions', {
     new_chet: (chet_name, balance) => ipcRenderer.invoke('new_chet', chet_name, balance),
     delete_chet: (chet_name) => ipcRenderer.send('delete_chet', chet_name),
     get_all_chets: () => ipcRenderer.invoke('get_all_chets'),
+    add_transaction_for_chet: (sum, chet_name) => ipcRenderer.invoke('add_transaction_for_chet', sum, chet_name),
+    get_transactions_for_chet: (chet_name) => ipcRenderer.invoke('get_transactions_for_chet', chet_name),
     // we can also expose variables, not just functions
 })
