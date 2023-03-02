@@ -35,6 +35,11 @@ window.addEventListener('keydown', (e) => {
 })
 
 window.addEventListener('click', async (e) => {
+    if (!e.target.classList.contains('menu')) {
+        main_menu.classList.remove('active')
+        menu_button_lines[0].classList.remove('active1')
+        menu_button_lines[1].classList.remove('active2')
+    }
     if (e.target.classList.contains('exit')) {
         balancesblock.removeChild(document.querySelector('#'+e.target.id))
         await window.versions.delete_chet(e.target.id)
@@ -44,7 +49,7 @@ window.addEventListener('click', async (e) => {
                     transactions = value.split('\n')
                     all_transactions_block.innerHTML = ''
                     for (let i = 0; i < transactions.length; i++) {
-                        create_transaction_block(parseFloat(transactions[i]))
+                        create_transaction_block(parseFloat(transactions[i]), transactions[i])
                     }
                 } else {
                     all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'

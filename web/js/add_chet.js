@@ -1,4 +1,4 @@
-add_chet_button.addEventListener('click', async () => {
+add_chet_button.addEventListener('click', () => {
     // await window.versions.new_chet('new', 0).then(
     //     (value) => {
     //         console.log(value.code)

@@ -41,7 +41,7 @@ const get_retype_password = () => {
         retype_password_modal.classList.remove('active')
         retype_password_input.blur()
         retype_password_input.value = ''
-        console.log(password, retype_password)
+        // console.log(password, retype_password)
     } else {
         retype_password_input.classList.add('err')
         for (let i = 0; i < 4; i++) {

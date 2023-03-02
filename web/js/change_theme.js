@@ -1,5 +1,5 @@
 const change_theme = (checked) => {
-    console.log(checked);
+    // console.log(checked);
     if (checked) {
         document.body.setAttribute('dark', '');
         theme = 'dark'

@@ -41,3 +41,6 @@ let username = localStorage.getItem('username')?localStorage.getItem('username')
 let password = ''
 let retype_password = ''
 let theme = localStorage.getItem('theme')?localStorage.getItem('theme'):'white'
+
+const rublehtml = "&#8381;"
+const usdhtml = "&dollar;"

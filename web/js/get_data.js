@@ -55,7 +55,7 @@ const get_data = async () => {
                 chets = value
                 balancesblock.innerHTML = ''
                 for (let i = 0; i < chets.length; i++) {
-                    console.log('iiiiiiiiiii: ', i)
+                    // console.log('iiiiiiiiiii: ', i)
                     add_balance_block(chets[i].name, chets[i].balance)
                 }
                 // console.log('chets = ', JSON.stringify(chets))

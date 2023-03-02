@@ -1,5 +1,5 @@
-const create_transaction_block = (sum) => {
-    console.log(isNaN(sum))
+const create_transaction_block = (sum, transactionstr) => {
+    // console.log(isNaN(sum))
     if (!isNaN(sum)) {
         const transaction_block = document.createElement('div')
         const transaction_sum_p = document.createElement('p')
@@ -9,10 +9,10 @@ const create_transaction_block = (sum) => {
         transaction_block.classList.add('transaction')
         if (sum > 0) {
             transaction_block.classList.add('plus')
-            transaction_sum_p.innerHTML = '+' + sum
+            transaction_sum_p.innerHTML = '+' + transactionstr
         } else {
             transaction_block.classList.add('minus')
-            transaction_sum_p.innerHTML = sum
+            transaction_sum_p.innerHTML = transactionstr
         }
         all_transactions_block.append(transaction_block)
     }

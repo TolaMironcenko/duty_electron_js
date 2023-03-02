@@ -3,11 +3,12 @@ username_modal_input.focus()
 window.versions.get_transactions().then(
     (value) => {
         if (value !== '') {
+            // console.log(value)
             if (!equals(transactions, value.split('\n'))) {
                 transactions = value.split('\n')
                 all_transactions_block.innerHTML = ''
                 for (let i = 0; i < transactions.length; i++) {
-                    create_transaction_block(parseFloat(transactions[i]))
+                    create_transaction_block(parseFloat(transactions[i]), transactions[i])
                 }
             }
         } else {
@@ -53,7 +54,7 @@ const get_username = async () => {
     if (username_modal_input.value !== '' && !/^\s+$/.test(username_modal_input.value)) {
         let username_f_uppercase = username_modal_input.value.split('')
         username_f_uppercase[0] = username_f_uppercase[0].toUpperCase()
-        console.log(username_f_uppercase.join(''))
+        // console.log(username_f_uppercase.join(''))
         username = username_f_uppercase.join('')
         window.versions.set_username(username)
         username_header.innerHTML = username
@@ -75,7 +76,7 @@ retype_password_modal.addEventListener('keydown', (e) => {
 })
 
 retype_password_input.addEventListener('keyup', (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
 
     for (let i = 0; i < 4; i++) {
         circles_retype[i].classList.remove('fill')
@@ -108,7 +109,7 @@ enter_password_modal.addEventListener('keydown', (e) => {
 enter_password_modal.addEventListener('click', () => enter_password_input.focus())
 
 enter_password_input.addEventListener('keyup', (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
 
     for (let i = 0; i < 4; i++) {
         circles[i].classList.remove('fill')
@@ -139,7 +140,7 @@ if (transactions.length === 0) {
     all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
 }
 loader.classList.remove('active')
-console.log(username, transactions, balance)
+// console.log(username, transactions, balance)
 
 get_username_button.addEventListener('click', get_username)
 
@@ -150,17 +151,41 @@ exit_button.addEventListener('click', () => {
     transition_modal.classList.remove('active')
 })
 
+const get_datetime = () => {
+    const datetime = new Date()
+    let day = datetime.getDate()
+    if (parseInt(day) < 10) {
+        day = "0" + day.toString()
+    }
+    let month = parseInt(datetime.getMonth()) + 1
+    if (parseInt(month) < 10) {
+        month = "0" + month.toString()
+    }
+    let year = datetime.getFullYear()
+
+    let hour = datetime.getHours()
+    if (parseInt(hour) < 10) {
+        hour = "0" + hour.toString()
+    }
+    let minutes = datetime.getMinutes()
+    if (parseInt(minutes) < 10) {
+        minutes = "0" + minutes.toString()
+    }
+    const datetimestr = day.toString() + "." + month.toString() + "." + year.toString() + " " + hour.toString() + ":" + minutes.toString()
+    return datetimestr
+}
+
 const add_transaction = async () => {
-    console.log(transition_modal.id)
+    // console.log(transition_modal.id)
     if (transition_modal.id === 'plus') {
-        await window.versions.add_transaction_for_chet(transaction_modal_input.value, add_button.id)
+        await window.versions.add_transaction_for_chet(transaction_modal_input.value + rublehtml + " " + get_datetime(), add_button.id)
         await window.versions.get_transactions_for_chet(add_button.id).then(
             (value) => {
                 if (value !== '') {
                     transactions = value.split('\n')
                     all_transactions_block.innerHTML = ''
                     for (let i = 0; i < transactions.length; i++) {
-                        create_transaction_block(parseFloat(transactions[i]))
+                        create_transaction_block(parseFloat(transactions[i]), transactions[i])
                     }
                 } else {
                     all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
@@ -168,14 +193,14 @@ const add_transaction = async () => {
             }
         )
     } else if (transition_modal.id === 'minus') {
-        await window.versions.add_transaction_for_chet(0 - transaction_modal_input.value, add_button.id)
+        await window.versions.add_transaction_for_chet(0 - transaction_modal_input.value + rublehtml + " " + get_datetime(), add_button.id)
         await window.versions.get_transactions_for_chet(add_button.id).then(
             (value) => {
                 if (value !== '') {
                     transactions = value.split('\n')
                     all_transactions_block.innerHTML = ''
                     for (let i = 0; i < transactions.length; i++) {
-                        create_transaction_block(parseFloat(transactions[i]))
+                        create_transaction_block(parseFloat(transactions[i]), transactions[i])
                     }
                 } else {
                     all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
@@ -220,7 +245,7 @@ clear_history_button.addEventListener('click', async () => {
                         transactions = value.split('\n')
                         all_transactions_block.innerHTML = ''
                         for (let i = 0; i < transactions.length; i++) {
-                            create_transaction_block(parseFloat(transactions[i]))
+                            create_transaction_block(parseFloat(transactions[i]), transactions[i])
                         }
                     } else {
                         all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
@@ -234,14 +259,14 @@ clear_history_button.addEventListener('click', async () => {
 })
 
 balancesblock.addEventListener('click', async (e) => {
-    if (e.target.classList.contains('balance-block') || e.target.classList.contains('balance-name') || e.target.classList.contains('header-balance')) {
+    if ((e.target.classList.contains('balance-block') || e.target.classList.contains('balance-name') || e.target.classList.contains('header-balance')) && e.target.id !== 'add_chet_button') {
         await window.versions.get_transactions_for_chet(e.target.id).then(
             (value) => {
                 if (value !== '') {
                     transactions = value.split('\n')
                     all_transactions_block.innerHTML = ''
                     for (let i = 0; i < transactions.length; i++) {
-                        create_transaction_block(parseFloat(transactions[i]))
+                        create_transaction_block(parseFloat(transactions[i]), transactions[i])
                     }
                 } else {
                     all_transactions_block.innerHTML = '<p class="app-p">Пока что нет транзакций</p>'
